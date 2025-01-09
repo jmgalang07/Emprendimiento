@@ -1,0 +1,320 @@
+<link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/@pqina/flip/dist/flip.min.js" is:inline></script>
+
+<style>
+  :root {
+    --primary-color: #090ab2;
+    --acent-color: #ffd00d;
+    --text-color: #f9f9f6;
+  }
+
+  #counter {
+    background-color: var(--primary-color);
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 28px;
+    color: var(--text-color);
+  }
+
+  #border-container {
+    border: 3px solid var(--acent-color);
+    width: 100%;
+    height: 40vh;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #title-counter {
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  #title-counter h1 {
+    font-size: 6vh;
+    line-height: 1.2;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  #title-counter span {
+    font-size: 6vh;
+    white-space: nowrap;
+  }
+
+  .acent-color {
+    color: var(--acent-color);
+  }
+
+  .tick {
+    font-size: 1rem;
+    white-space: nowrap;
+    font-family: arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .tick-flip,
+  .tick-text-inline {
+    font-size: 5vw;
+  }
+
+  .tick-label {
+    margin-top: 1em;
+    font-size: 1em;
+    color: var(--text-color);
+  }
+
+  #counter .tick .tick-group .tick-label {
+    margin-top: 1em;
+    font-size: 1em;
+  }
+
+  .tick-char {
+    width: 1.5em;
+  }
+
+  .tick-text-inline {
+    display: inline-block;
+    text-align: center;
+    min-width: 1em;
+  }
+
+  .tick-text-inline + .tick-text-inline {
+    margin-left: -0.325em;
+  }
+
+  .tick-group {
+    margin: 0 0.5em;
+    text-align: center;
+  }
+
+  body {
+    background-color: #fff !important;
+  }
+
+  .tick-text-inline {
+    color: #595d63 !important;
+  }
+
+  .tick-flip-panel {
+    color: #fff !important;
+  }
+
+  .tick-flip {
+    font-family: !important;
+  }
+
+  .tick-flip-panel-text-wrapper {
+    line-height: 1.45 !important;
+  }
+
+  .tick-flip-panel {
+    background-color: #3c3e3c !important;
+  }
+
+  .tick-flip {
+    border-radius: 0.12em !important;
+  }
+
+  @media (min-width: 361px) and (max-width: 1080px) {
+    #counter {
+      height: auto;
+      padding: 15px;
+    }
+
+    #border-container {
+      flex-direction: column;
+      height: 100%;
+      padding: 15px;
+      gap: 30px;
+    }
+
+    #title-counter {
+      width: auto;
+      text-align: center;
+    }
+
+    #title-counter h1,
+    #title-counter span {
+      text-align: center;
+      font-size: 3.5vh;
+    }
+
+    .tick {
+      flex-direction: row;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .tick-flip,
+    .tick-text-inline {
+      font-size: 5vw;
+    }
+
+    .tick-group {
+      margin: 0 0.2em;
+    }
+  }
+
+  @media (max-width: 360px) {
+    #counter {
+      height: auto;
+      padding: 15px;
+    }
+
+    #border-container {
+      flex-direction: column;
+      height: 100%;
+      padding: 15px;
+      gap: 30px;
+    }
+
+    #title-counter {
+      width: auto;
+      text-align: center;
+    }
+
+    #title-counter h1,
+    #title-counter span {
+      text-align: center;
+      font-size: 3.5vh;
+    }
+
+    .tick {
+      flex-direction: row;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .tick-flip,
+    .tick-text-inline {
+      font-size: 1.5rem;
+    }
+
+    .tick-group {
+      margin: 0 0.2em;
+    }
+  }
+</style>
+
+<div id="counter">
+  <div id="border-container">
+    <div id="title-counter">
+      <h1
+        class="delay-[100ms] duration-[600ms] taos:translate-x-[-100%] taos:opacity-0"
+        data-taos-offset="-100"
+      >
+        <span class="acent-color">Comienzan en</span>
+      </h1>
+    </div>
+    <div class="tick" data-did-init="handleTickInit">
+      <div
+        class="delay-[300ms] duration-[600ms] taos:translate-y-[100%] taos:opacity-0"
+        data-taos-offset="-100"
+      >
+        <div
+          data-repeat="true"
+          data-layout="horizontal fit"
+          data-transform="preset(d, h, m, s) -> delay"
+        >
+          <div class="tick-group">
+            <div
+              data-key="value"
+              data-repeat="true"
+              data-transform="pad(00) -> split -> delay"
+            >
+              <span data-view="flip"></span>
+            </div>
+
+            <span data-key="label" data-view="text" class="tick-label"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function handleTickInit(tick) {
+    // uncomment to set labels to different language
+
+    var locale = {
+      YEAR_PLURAL: "Años",
+      YEAR_SINGULAR: "Año",
+      MONTH_PLURAL: "Meses",
+      MONTH_SINGULAR: "Mes",
+      WEEK_PLURAL: "Semanas",
+      WEEK_SINGULAR: "Semana",
+      DAY_PLURAL: "Días",
+      DAY_SINGULAR: "Día",
+      HOUR_PLURAL: "Horas",
+      HOUR_SINGULAR: "Hora",
+      MINUTE_PLURAL: "Minutos",
+      MINUTE_SINGULAR: "Minuto",
+      SECOND_PLURAL: "Segundos",
+      SECOND_SINGULAR: "Segundo",
+      MILLISECOND_PLURAL: "Milisegundos",
+      MILLISECOND_SINGULAR: "Milisegundo",
+    };
+
+    for (var key in locale) {
+      if (!locale.hasOwnProperty(key)) {
+        continue;
+      }
+      tick.setConstant(key, locale[key]);
+    }
+
+    // format of due date is ISO8601
+    // https://en.wikipedia.org/wiki/ISO_8601
+
+    // '2018-01-31T12:00:00'        to count down to the 31st of January 2018 at 12 o'clock
+    // '2019'                       to count down to 2019
+    // '2018-01-15T10:00:00+01:00'  to count down to the 15th of January 2018 at 10 o'clock in timezone GMT+1
+
+    //var nextYear = new Date().getFullYear() + 1;
+    var countdownDate = "2025-02-03T00:00:00+01:00";
+
+    // create the countdown counter
+    var counter = Tick.count.down(countdownDate);
+
+    counter.onupdate = function (value) {
+      tick.value = value;
+    };
+
+    counter.onended = function () {
+      // redirect, uncomment the next line
+      // window.location = 'my-location.html'
+      // hide counter, uncomment the next line
+      // tick.root.style.display = 'none';
+      // show message, uncomment the next line
+      // document.querySelector('.tick-onended-message').style.display = '';
+    };
+
+    // Hide tick-credits
+    setTimeout(function () {
+      // Esconde tick-credits
+      const tickCredits = document.querySelector(".tick-credits");
+      if (tickCredits) {
+        tickCredits.style.display = "none";
+      }
+    }, 1); // Retrasa la ejecución 100 milisegundos
+  }
+</script>
+
+<div class="tick-onended-message" style="display: none">
+  <p>Time's up</p>
+</div>

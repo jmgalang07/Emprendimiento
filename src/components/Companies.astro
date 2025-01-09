@@ -1,0 +1,312 @@
+<div id="companies" class="bg-white">
+  <h1 class="font-bold text-secondary-color">Colaboradores</h1>
+
+  <div class="parent">
+    <div class="div1 first block bg-white-color">
+      <img src="images/companies/ilkeBenson.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">Ilke Benson</span>
+      </div>
+    </div>
+
+    <div class="div2 second block bg-white-color">
+      <img src="images/companies/fpProfesional.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">fp Profesional</span>
+      </div>
+    </div>
+
+    <div class="div3 third block bg-white-color">
+      <img src="images/companies/femec.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">femec</span>
+      </div>
+    </div>
+
+    <div class="div4 second block bg-white-color">
+      <img src="images/companies/ayuntMerida.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">Mérida</span>
+      </div>
+    </div>
+
+    <div class="div5 third block bg-white-color">
+      <img src="images/companies/porsche.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">Porsche</span>
+      </div>
+    </div>
+
+    <div class="div6 first block bg-white-color">
+      <img src="images/companies/aDeArco.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">A de Arco</span>
+      </div>
+    </div>
+
+    <div class="div7 second block bg-white-color">
+      <img src="images/companies/culturaEmprendedora.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">C.Emprendedora</span>
+      </div>
+    </div>
+
+    <div class="div8 first block bg-white-color">
+      <img src="images/companies/bigMat.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">Big Mat</span>
+      </div>
+    </div>
+
+    <div class="div9 third block bg-white-color">
+      <img src="images/companies/plastyAgro.png" alt="" />
+      <div class="companies-name">
+        <span class="bg-black-color text-accent-color">Plasty Agro</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Reset de estilos y configuración básica */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  #companies {
+    width: 100%;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #companies h1 {
+    text-align: center;
+    padding: 40px;
+    font-size: 3em;
+  }
+
+  .parent {
+    width: 65%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    gap: 32px;
+    justify-content: center;
+  }
+
+  .first {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 8%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: first 3.5s ease-in-out 2s forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+  .second {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 8%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: first 3.5s ease-in-out 2s forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+  .third {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 8%;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: first 3.5s ease-in-out 2s forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+
+  #companies img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8%;
+    transition: none;
+    padding: 16px;
+  }
+
+  .companies-name span {
+    position: absolute;
+    right: -8px;
+    bottom: -8px;
+    width: 80%;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 4px;
+    box-shadow: 3px 4px 9px black;
+  }
+
+  #companies img:hover {
+    transform: scale(1.05);
+    padding: 16px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  @keyframes first {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 500px) {
+    #companies {
+      width: 100%;
+    }
+
+    #companies h1 {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .parent {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 24px 0px;
+      padding: 10px 0;
+    }
+
+    .first,
+    .second,
+    .third {
+      width: 312px;
+      height: 150px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .first:hover,
+    .second:hover,
+    .third:hover {
+      transform: scale(1.1);
+    }
+
+    #companies img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+    }
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 720px) {
+    #companies {
+      width: 100%;
+    }
+
+    #companies h1 {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .parent {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+      gap: 24px 0px;
+      padding: 10px 0;
+    }
+
+    .first,
+    .second,
+    .third {
+      width: 200px;
+      height: 150px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .first:hover,
+    .second:hover,
+    .third:hover {
+      transform: scale(1.1);
+    }
+
+    #companies img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  @media screen and (min-width: 720px) and (max-width: 864px) {
+    #companies {
+      width: 100%;
+    }
+
+    #companies h1 {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .parent {
+      width: 100%;
+      display: grid;
+      justify-items: center;
+      gap: 24px 0px;
+      padding: 10px 0;
+    }
+
+    .first,
+    .second,
+    .third {
+      width: 200px;
+      height: 150px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .first:hover,
+    .second:hover,
+    .third:hover {
+      transform: scale(1.1);
+    }
+
+    #companies img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+</style>

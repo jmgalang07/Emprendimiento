@@ -1,0 +1,301 @@
+<div id="hero-container">
+  <div id="phrase">
+    <span>Jornada del</span>
+    <span>Emprendimiento</span>
+    <span>Sostenible</span>
+  </div>
+  <img
+    src="images/hero/logoAulaEmpren.webp"
+    alt="Logo del Aula de Emprendimiento"
+  />
+  <div id="scroll-indicator"></div>
+</div>
+
+<style>
+  :root {
+    --secondary-color-light: rgba(253, 192, 23, 0.5);
+    --background-dark: rgba(0, 0, 0, 0.5);
+    --text-shadow-dark: rgba(0, 0, 0, 0.3);
+    --text-shadow-light: rgba(255, 255, 255, 0.2);
+    --text-shadow: 5px 5px 10px var(--text-shadow-dark),
+      -5px -5px 10px var(--text-shadow-light);
+    --logo-shadow-light: brightness(1)
+      drop-shadow(0 0 5px var(--secondary-color-light));
+    --logo-shadow-strong: brightness(1.5) drop-shadow(0 0 20px #fdc01a);
+  }
+
+  #hero-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(
+        var(--background-dark),
+        var(--background-dark)
+      ),
+      url(../images/hero/acueducto.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    gap: 15%;
+    /* margin-top: 100px; */
+    overflow: hidden;
+    scroll-snap-align: start;
+    animation: slideBackground 70s ease-in-out infinite;
+  }
+
+  #phrase {
+    display: flex;
+    flex-direction: column;
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease,
+      font-size 0.5s ease;
+    background: rgb(173 173 173 / 41%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 16px;
+  }
+
+  #phrase span {
+    font-size: 5.3vw;
+    opacity: 0;
+    transform: translateX(-100%);
+    text-shadow: var(--text-shadow);
+    animation:
+      shineText 4s infinite,
+      spanSlideIn 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    animation-fill-mode: forwards;
+  }
+
+  #phrase span:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  #phrase span:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  #phrase span:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  #hero-container > img {
+    width: 30%;
+    opacity: 0;
+    transform: translateY(50%) rotateY(0deg);
+    animation:
+      logoScrollRotateY 2s ease-out forwards 1.2s,
+      logoGlow 2s infinite alternate 2.2s;
+    will-change: transform, opacity, filter;
+}
+
+
+  #scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    border: 2px solid #fdc01a;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    animation: bounce 1.5s infinite;
+  }
+
+  #scroll-indicator::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #fdc01a;
+    border-radius: 50%;
+    margin-top: 10px;
+    animation: moveScroll 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
+
+  @keyframes moveScroll {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(15px);
+    }
+  }
+
+  @keyframes spanSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    80% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    90% {
+      transform: translateX(-10px);
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes logoGlow {
+    0% {
+      filter: var(--logo-shadow-light);
+    }
+
+    100% {
+      filter: var(--logo-shadow-strong);
+    }
+  }
+
+  @keyframes logoScrollRotateY {
+  from {
+    opacity: 0;
+    transform: translateY(50%) rotateY(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateY(360deg);
+  }
+}
+
+
+  @keyframes appearFromBelow {
+    from {
+      bottom: -50px;
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+
+    to {
+      bottom: 20px;
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes shineText {
+    0% {
+      background: linear-gradient(to right, #fdc01a 0%, #fff 50%, #fdc01a 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+
+    25% {
+      background: linear-gradient(to right, #fdc01a 0%, #fff 50%, #fdc01a 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      background-position: 50% 0;
+    }
+
+    50% {
+      background: linear-gradient(to right, #fdc01a 0%, #fff 50%, #fdc01a 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      background-position: 100% 0;
+    }
+
+    75% {
+      background: linear-gradient(to right, #fdc01a 0%, #fff 50%, #fdc01a 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      background-position: 150% 0;
+    }
+
+    100% {
+      background: linear-gradient(to right, #fdc01a 0%, #fff 50%, #fdc01a 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes slideBackground {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    50% {
+      background-position: 100% 0%;
+    }
+
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+
+  @media screen and (width < 1440px) and (width >= 414px) {
+    #hero-container {
+      margin-top: 100px;
+    }
+  }
+
+  @media screen and (width < 414px) {
+    #hero-container {
+      flex-direction: column;
+      gap: 5%;
+      margin-top: 60px;
+    }
+
+    #hero-container > img {
+      width: 45%;
+    }
+
+    #phrase {
+      margin-right: 0;
+      text-align: center;
+    }
+
+    #phrase span {
+      font-size: 10vw;
+    }
+
+    #scroll-indicator {
+      width: 25px;
+      height: 40px;
+    }
+
+    #scroll-indicator::before {
+      width: 6px;
+      height: 0.35em;
+    }
+  }
+</style>
